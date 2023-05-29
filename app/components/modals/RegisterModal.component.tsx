@@ -1,21 +1,27 @@
 'use client';
 
-import { REST_API } from "@/consts";
+import { REST_API } from "@/app/consts";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import useRegisterModal from "@/hooks/useRegisterModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
-    useForm
+    useForm,
 } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import Modal from "./Modal.component";
 import Input from "../inputs/Input.component";
 import Heading from "../Heading.component";
 import Button from "../Button.component";
+
+const DEFAULT_VALUE = {
+    name: '',
+    email: '',
+    password: ''
+}
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -24,16 +30,11 @@ const RegisterModal = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: {
             errors,
         },
-    } = useForm<FieldValues>({
-        defaultValues: {
-            name: '',
-            email: '',
-            password: ''
-        },
-    });
+    } = useForm<FieldValues>({ defaultValues: DEFAULT_VALUE });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
@@ -41,11 +42,11 @@ const RegisterModal = () => {
         axios.post(REST_API.REGISTER, data)
             .then(() => {
                 toast.success('Registered!');
+                reset({ defaultValues: DEFAULT_VALUE })
                 registerModal.onClose();
                 // loginModal.onOpen();
             })
             .catch((error) => {
-                console.log('err', error)
                 toast.error(error.message);
             })
             .finally(() => {

@@ -1,8 +1,8 @@
 'use client';
 
-import { Avatar } from "@/components";
-import { ROUTER_URL, USER_MENU_ITEM_NAME } from "@/consts";
-import useRegisterModal from "@/hooks/useRegisterModal";
+import { Avatar } from "@/app/components";
+import { ROUTER_URL, USER_MENU_ITEM_NAME } from "@/app/consts";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";

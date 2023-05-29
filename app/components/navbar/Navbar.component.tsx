@@ -1,6 +1,6 @@
 'use client';
 
-import { Container } from '@/components';
+import { Container } from '@/app/components';
 import Logo from './Logo.component';
 import Search from './Search.component';
 import UserMenu from './UserMenu.component';

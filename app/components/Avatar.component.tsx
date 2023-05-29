@@ -1,6 +1,6 @@
 'use client';
 
-import { IMAGE_SRC } from "@/consts";
+import { IMAGE_SRC } from "@/app/consts";
 import Image from "next/image";
 
 interface AvatarProps {

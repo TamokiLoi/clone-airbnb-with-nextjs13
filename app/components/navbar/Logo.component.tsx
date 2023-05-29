@@ -1,6 +1,6 @@
 'use client';
 
-import { IMAGE_SRC, ROUTER_URL } from "@/consts";
+import { IMAGE_SRC, ROUTER_URL } from "@/app/consts";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
